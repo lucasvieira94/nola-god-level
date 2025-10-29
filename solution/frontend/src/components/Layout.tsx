@@ -1,7 +1,15 @@
 import React, { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
-import { LayoutDashboard, LogOut, Menu, X, Moon, Sun } from "lucide-react";
+import {
+  LayoutDashboard,
+  LogOut,
+  Menu,
+  X,
+  Moon,
+  Sun,
+  FileDown,
+} from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 
@@ -18,6 +26,17 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const handleLogout = () => {
     logout();
     navigate("/login");
+  };
+
+  const handleDownloadDocs = () => {
+    // Download the documentation as Markdown file
+    const link = document.createElement("a");
+    link.href = "/documentation.md";
+    link.download = "Restaurant-Analytics-Documentation.md";
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -49,6 +68,16 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               >
                 <LayoutDashboard className="w-5 h-5 mr-2" aria-hidden="true" />
                 Dashboard
+              </button>
+
+              <button
+                onClick={handleDownloadDocs}
+                className="flex items-center px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                title="Baixar Documentação"
+                aria-label="Download documentation"
+              >
+                <FileDown className="w-5 h-5 mr-2" aria-hidden="true" />
+                Docs
               </button>
 
               <button
@@ -129,6 +158,18 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               >
                 <LayoutDashboard className="w-5 h-5 mr-2" aria-hidden="true" />
                 Dashboard
+              </button>
+              <button
+                onClick={() => {
+                  handleDownloadDocs();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="flex items-center w-full px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg"
+                role="menuitem"
+                aria-label="Download documentation"
+              >
+                <FileDown className="w-5 h-5 mr-2" aria-hidden="true" />
+                Baixar Documentação
               </button>
               <button
                 onClick={toggleTheme}
