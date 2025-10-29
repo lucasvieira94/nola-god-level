@@ -1,0 +1,14 @@
+{
+  "buildCommand": "cd solution/frontend && npm install && npm run build",
+  "outputDirectory": "solution/frontend/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "env": {
+    "VITE_API_URL": "https://your-backend-url.onrender.com"
+  }
+}
