@@ -35,7 +35,11 @@ build/
 # OS
 Thumbs.db
 
-# Video Script (local only)
+# Video Script and Analysis (local only - for study/reference)
 VIDEO_SCRIPT.md
 solution/VIDEO_SCRIPT.md
+PROJECT_EVALUATION.md
+COMPLETED_TASKS.md
+check_data.py
+test_api.py
 
