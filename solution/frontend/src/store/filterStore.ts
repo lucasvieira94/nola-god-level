@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { subDays, format } from "date-fns";
 
 export interface FilterState {
   startDate: string;
@@ -18,11 +17,11 @@ interface FilterStore {
 }
 
 const getDefaultDateRange = () => {
-  const end = new Date();
-  const start = subDays(end, 30);
+  // Use the date range where we have actual data in the database
+  // Data range: 2025-05-02 to 2025-05-04 (can be expanded as more data is generated)
   return {
-    startDate: format(start, "yyyy-MM-dd"),
-    endDate: format(end, "yyyy-MM-dd"),
+    startDate: "2025-05-01",
+    endDate: "2025-05-31",
   };
 };
 
