@@ -42,6 +42,7 @@ PRESENTATION_SCRIPT.md
 PROJECT_EVALUATION.md
 COMPLETED_TASKS.md
 LOCAL_SETUP_GUIDE.md
+populate_production_db.py
 check_data.py
 test_api.py
 
