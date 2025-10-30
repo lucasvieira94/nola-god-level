@@ -38,6 +38,7 @@ Thumbs.db
 # Video Script and Analysis (local only - for study/reference)
 VIDEO_SCRIPT.md
 solution/VIDEO_SCRIPT.md
+PRESENTATION_SCRIPT.md
 PROJECT_EVALUATION.md
 COMPLETED_TASKS.md
 check_data.py
