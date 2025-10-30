@@ -46,10 +46,7 @@ export const LoginPage: React.FC = () => {
           id="login-title"
           className="text-32 font-bold text-center mb-2 text-gray-900 dark:text-white"
         >
-          <span role="img" aria-label="Restaurant">
-            🍔
-          </span>{" "}
-          Restaurant Analytics
+          NOLA Platform
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-center mb-6">
           {isRegistering ? "Create your account" : "Sign in to your account"}

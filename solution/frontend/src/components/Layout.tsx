@@ -51,11 +51,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
-                <span className="text-24" role="img" aria-label="Restaurant">
-                  🍔
-                </span>
-                <span className="ml-2 text-20 font-bold text-gray-900 dark:text-white">
-                  Restaurant Analytics
+                <span className="text-20 font-bold text-gray-900 dark:text-white">
+                  NOLA Platform
                 </span>
               </div>
             </div>
