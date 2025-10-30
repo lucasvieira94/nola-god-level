@@ -1,4 +1,5 @@
 # 🎬 Roteiro de Apresentação - NOLA Platform
+
 ## Vídeo Demo (5-10 minutos)
 
 ---
@@ -14,23 +15,25 @@
 ## 🎯 Introdução (1 minuto)
 
 ### Slide de Abertura
+
 - **Logo/Título**: "NOLA - Restaurant Analytics Platform"
 - **Tagline**: "Power BI para Restaurantes"
 - **Seu Nome**: Antonio Claudio Junior
 - **GitHub**: @Su6eate9
 
 ### Fala
+
 ```
-Olá! Sou Antonio Claudio Junior e vou apresentar a NOLA Platform, 
+Olá! Sou Antonio Claudio Junior e vou apresentar a NOLA Platform,
 minha solução para o God Level Coder Challenge.
 
-O problema é simples mas crítico: donos de restaurantes têm toneladas 
+O problema é simples mas crítico: donos de restaurantes têm toneladas
 de dados, mas não conseguem transformá-los em insights acionáveis.
 
 Ferramentas genéricas como Power BI não entendem o negócio de food service.
 Dashboards fixos não respondem perguntas específicas.
 
-A NOLA é uma plataforma de analytics desenvolvida ESPECIFICAMENTE para 
+A NOLA é uma plataforma de analytics desenvolvida ESPECIFICAMENTE para
 restaurantes multi-canal. Vou mostrar como ela resolve esse problema.
 ```
 
@@ -49,6 +52,7 @@ restaurantes multi-canal. Vou mostrar como ela resolve esse problema.
 ```
 
 ### Fala
+
 ```
 A arquitetura é moderna e escalável:
 
@@ -76,11 +80,14 @@ DADOS:
 ```
 
 ### Tela: Mostrar código-chave
+
 1. **Prisma Schema** (10 segundos)
+
    - Mostrar models: Sale, Product, Customer
    - Highlight: relations e indexes
 
 2. **API Controller** (15 segundos)
+
    - Mostrar getOverview function
    - Highlight: aggregation e comparação de períodos
 
@@ -363,6 +370,7 @@ Perguntas? Vamos conversar! 🚀
 ## 📝 Checklist de Gravação
 
 ### Antes de Gravar
+
 - [ ] Fechar todas as abas desnecessárias do navegador
 - [ ] Limpar histórico de notificações
 - [ ] Configurar resolução de tela (1920x1080)
@@ -372,6 +380,7 @@ Perguntas? Vamos conversar! 🚀
 - [ ] Ensaiar 2-3 vezes
 
 ### Durante a Gravação
+
 - [ ] Gravar tela + áudio + webcam (opcional)
 - [ ] Falar claramente e com ritmo moderado
 - [ ] Mostrar código quando relevante
@@ -380,6 +389,7 @@ Perguntas? Vamos conversar! 🚀
 - [ ] Não ultrapassar 10 minutos
 
 ### Depois da Gravação
+
 - [ ] Editar (cortar pausas longas)
 - [ ] Adicionar transições suaves
 - [ ] Incluir música de fundo leve (opcional)
@@ -393,16 +403,19 @@ Perguntas? Vamos conversar! 🚀
 ## 🎥 Ferramentas Recomendadas
 
 ### Gravação
+
 - **OBS Studio** (gratuito) - Melhor para screencast
 - **Loom** (gratuito até 5min) - Simples e rápido
 - **Camtasia** (pago) - Gravação + edição
 
 ### Edição
+
 - **DaVinci Resolve** (gratuito) - Profissional
 - **iMovie** (Mac, gratuito) - Simples
 - **Shotcut** (gratuito) - Cross-platform
 
 ### Slides
+
 - **Canva** (gratuito) - Templates prontos
 - **PowerPoint** - Clássico
 - **Google Slides** - Colaborativo
