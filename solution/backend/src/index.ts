@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
+import compression from "compression";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth";
 import metricsRoutes from "./routes/metrics";
@@ -10,6 +11,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Enable compression for all responses
+app.use(compression());
+
 // Configure CORS
 const corsOptions = {
   origin: process.env.CORS_ORIGIN || "*",
@@ -19,8 +23,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.get("/health", (req: Request, res: Response) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
