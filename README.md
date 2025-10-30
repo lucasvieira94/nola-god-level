@@ -56,26 +56,36 @@ O vídeo mostra:
 
 ### Rodando Localmente
 
+**Pré-requisitos:**
+
+- Docker Desktop instalado e rodando
+- Node.js 18+ instalado
+
 ```bash
-# Clone o repositório
+# 1. Clone o repositório
 git clone https://github.com/Su6eate9/nola-god-level-solution.git
 cd nola-god-level-solution
 
-# Inicie o banco de dados
-docker-compose up -d
+# 2. Inicie os serviços (PostgreSQL + Backend em containers)
+docker compose up -d
 
-# Backend
-cd solution/backend
-npm install
-npm run dev  # Porta 3001
+# 3. Popular banco de dados (90k+ vendas para testes)
+docker compose run --rm data-generator
 
-# Frontend (nova janela de terminal)
+# 4. Frontend (abra nova janela de terminal)
 cd solution/frontend
 npm install
-npm run dev  # Porta 3000
+npm run dev  # Porta 5173
 ```
 
-Acesse: http://localhost:3000
+**Acesse**: http://localhost:5173
+
+**Credenciais de teste:**
+
+- Email: `test@nola.com`
+- Senha: `Test123!`
+
+> 💡 **Nota**: O backend roda em container (`godlevel-backend-dev`) na porta 3001 e se conecta automaticamente ao PostgreSQL via rede Docker.
 
 ---
 
@@ -250,59 +260,94 @@ Acesse: http://localhost:3000
 
 ### Pré-requisitos
 
-- Node.js 18+
-- PostgreSQL 15+
-- Docker (opcional)
-- Python 3.9+ (para scripts)
+- **Docker Desktop** (obrigatório)
+- **Node.js 18+** (para frontend)
+- Python 3.9+ (opcional, para scripts de teste)
 
-### Setup
+### Setup com Docker (Recomendado)
 
 ```bash
 # 1. Clone o repositório
 git clone https://github.com/Su6eate9/nola-god-level-solution.git
 cd nola-god-level-solution
 
-# 2. Instalar dependências
-cd solution/backend && npm install
-cd ../frontend && npm install
+# 2. Inicie PostgreSQL + Backend (containers)
+docker compose up -d
 
-# 3. Configurar ambiente
-cp solution/backend/.env.example solution/backend/.env
-cp solution/frontend/.env.example solution/frontend/.env
+# 3. Popule o banco com dados de teste (90k+ vendas)
+docker compose run --rm data-generator
 
-# 4. Iniciar banco
-docker-compose up -d
-
-# 5. Executar migrations
-cd solution/backend
-npx prisma migrate dev
-
-# 6. Gerar dados (opcional)
-python generate_data.py
-
-# 7. Iniciar serviços
-npm run dev  # Backend (3001)
-cd ../frontend && npm run dev  # Frontend (3000)
+# 4. Inicie o Frontend (host)
+cd solution/frontend
+npm install
+npm run dev  # Porta 5173
 ```
 
-### Scripts Úteis
+**Acesse**: http://localhost:5173
+
+### Verificar Serviços
 
 ```bash
-# Backend
-npm run dev          # Dev server com hot reload
-npm run build        # Build produção
-npm run start        # Start produção
-npx prisma studio    # GUI do banco de dados
+# Ver containers rodando
+docker ps
+
+# Logs do backend
+docker logs -f godlevel-backend-dev
+
+# Logs do PostgreSQL
+docker logs -f godlevel-db
+
+# Acessar banco de dados
+docker exec -it godlevel-db psql -U challenge -d challenge_db
+
+# Verificar dados
+docker exec godlevel-db psql -U challenge -d challenge_db -c "SELECT COUNT(*) FROM sales;"
+```
+
+### Configurações de Ambiente
+
+**Backend** (dentro do container):
+
+- `DATABASE_URL`: `postgresql://challenge:challenge_2024@postgres:5432/challenge_db`
+- `PORT`: `3001`
+- `NODE_ENV`: `development`
+
+**Frontend** (local em [`solution/frontend/.env`](solution/frontend/.env)):
+
+- `VITE_API_URL`: `http://localhost:3001`
+
+### Comandos Úteis
+
+```bash
+# Parar todos os serviços
+docker compose down
+
+# Reiniciar do zero (apaga volumes)
+docker compose down -v
+docker compose up -d
+
+# Acessar Prisma Studio (dentro do container)
+docker exec -it godlevel-backend-dev npx prisma studio
 
 # Frontend
-npm run dev          # Dev server
+cd solution/frontend
+npm run dev          # Dev server (5173)
 npm run build        # Build produção
 npm run preview      # Preview build local
-npm run lint         # Lint code
 
-# Testes
-python test_api.py                    # Testar API
-python check_data.py "<DATABASE_URL>" # Verificar dados
+# Testes de API
+curl http://localhost:3001/api/health
+curl -X POST http://localhost:3001/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@example.com","password":"Test123!","name":"Test User"}'
+```
+
+### Estrutura de Containers
+
+```
+godlevel-db              → PostgreSQL 15 (porta 5432)
+godlevel-backend-dev     → Backend Node.js (porta 3001)
+godlevel-data-gen        → Script de população de dados (run once)
 ```
 
 ---

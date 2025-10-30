@@ -1,35 +1,106 @@
-# ⚡ Quick Start - 5 Minutos
+# ⚡ Quick Start - NOLA Platform
 
-ATENÇÃO: essa é uma sugestão de setup, não é obrigatório que se rode dessa maneira. O script base para geração de dados está em ./generate_data.py.
+## 🌐 Testando em Produção (Mais Rápido!)
 
-## Setup Completo
+**Acesse agora**: https://nola-god-level-solution.vercel.app
+
+1. Registre uma conta (qualquer email válido)
+2. Explore o dashboard com **10,337 vendas reais**
+3. Teste filtros, gráficos e exportações
+
+---
+
+## 💻 Setup Local Completo
+
+### Pré-requisitos
+
+- Docker Desktop instalado e rodando
+- Node.js 18+ instalado
+
+### 1️⃣ Clone e Prepare o Ambiente
 
 ```bash
-# 1. Clone
-git clone https://github.com/lucasvieira94/nola-god-level.git
-cd nola-god-level
+# Clone o repositório
+git clone https://github.com/Su6eate9/nola-god-level-solution.git
+cd nola-god-level-solution
+```
 
+### 2️⃣ Inicie os Serviços com Docker
 
-docker compose down -v 2>/dev/null || true
-docker compose build --no-cache data-generator
-docker compose up -d postgres
+```bash
+# Sobe PostgreSQL + Backend automaticamente
+docker compose up -d
+
+# Verifique os containers
+docker ps
+# Você deve ver: godlevel-db e godlevel-backend-dev
+```
+
+### 3️⃣ Popule o Banco de Dados
+
+```bash
+# Gera 90k+ vendas para testes (leva ~5 minutos)
 docker compose run --rm data-generator
-docker compose --profile tools up -d pgadmin
+
+# Verifique os dados
+docker exec godlevel-db psql -U challenge -d challenge_db -c "SELECT COUNT(*) FROM sales;"
 ```
 
-**Aguarde 5-15 minutos** enquanto 500k vendas são geradas.
-
-## Verifique
+### 4️⃣ Inicie o Frontend
 
 ```bash
-docker compose exec postgres psql -U challenge challenge_db -c 'SELECT COUNT(*) FROM sales;'
-
-# Deve mostrar ~500k
+# Em uma nova janela de terminal
+cd solution/frontend
+npm install
+npm run dev
 ```
 
-## Explore
+### 5️⃣ Acesse a Aplicação
 
-Explore os dados gerados da forma como quiser e julgar mais eficiente. Navegue pelas tableas e entenda seus relacionamentos.
+**Frontend**: http://localhost:5173  
+**Backend API**: http://localhost:3001  
+**Health Check**: http://localhost:3001/api/health
+
+**Credenciais de teste:**
+
+- Email: `test@nola.com`
+- Senha: `Test123!`
+
+---
+
+## ✅ Verificação Rápida
+
+```bash
+# Contar vendas no banco
+docker exec godlevel-db psql -U challenge -d challenge_db -c "SELECT COUNT(*) FROM sales;"
+
+# Testar backend
+curl http://localhost:3001/api/health
+
+# Ver logs do backend
+docker logs -f godlevel-backend-dev
+```
+
+---
+
+## 🔧 Comandos Úteis
+
+```bash
+# Parar todos os serviços
+docker compose down
+
+# Reiniciar do zero (apaga dados)
+docker compose down -v
+docker compose up -d
+docker compose run --rm data-generator
+
+# Acessar o banco diretamente
+docker exec -it godlevel-db psql -U challenge -d challenge_db
+
+# Ver logs
+docker logs -f godlevel-db          # PostgreSQL
+docker logs -f godlevel-backend-dev # Backend
+```
 
 ## Estrutura dos Dados
 
