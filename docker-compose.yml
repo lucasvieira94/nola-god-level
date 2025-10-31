@@ -29,9 +29,6 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgresql://challenge:challenge_2024@postgres:5432/challenge_db
-      # Ajuste os parâmetros para controlar o volume de dados:
-      # MONTHS: número de meses de dados (padrão: 60 = 2.0M+ vendas)
-      # Para volume menor (~90k vendas): docker compose run --rm -e MONTHS=10 data-generator
     command: >
       sh -c "
         echo 'Waiting for database to be ready...' &&

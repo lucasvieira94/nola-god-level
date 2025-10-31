@@ -1,6 +1,6 @@
-# ⚡ Quick Start - NOLA Platform
+# Quick Start - NOLA Platform
 
-## 🌐 Testando em Produção (Mais Rápido!)
+## Testando em Produção
 
 **Acesse agora**: https://nola-god-level-solution.vercel.app
 
@@ -10,14 +10,14 @@
 
 ---
 
-## 💻 Setup Local Completo
+## Setup Local Completo
 
 ### Pré-requisitos
 
 - Docker Desktop instalado e rodando
 - Node.js 18+ instalado
 
-### 1️⃣ Clone e Prepare o Ambiente
+### 1. Clone e Prepare o Ambiente
 
 ```bash
 # Clone o repositório
@@ -25,44 +25,40 @@ git clone https://github.com/Su6eate9/nola-god-level-solution.git
 cd nola-god-level-solution
 ```
 
-### 2️⃣ Inicie os Serviços com Docker
+### 2. Inicie os Serviços com Docker
 
 ```bash
-# Sobe PostgreSQL + Backend automaticamente
 docker compose up -d
 
-# Verifique os containers
 docker ps
-# Você deve ver: godlevel-db e godlevel-backend-dev
 ```
 
-### 3️⃣ Popule o Banco de Dados
+### 3. Popule o Banco de Dados
 
 ```bash
-# OPÇÃO 1: Volume completo - 2.0M+ vendas para stress test (leva ~30 minutos)
+# Volume completo - 2.0M+ vendas (leva ~30 minutos)
 docker compose run --rm data-generator
 
-# OPÇÃO 2: Volume menor - 90k vendas para testes rápidos (leva ~5 minutos)
+# Volume menor - 90k vendas (leva ~5 minutos)
 docker compose run --rm -e MONTHS=10 data-generator
 
-# Verifique os dados
+# Verificar dados
 docker exec godlevel-db psql -U challenge -d challenge_db -c "SELECT COUNT(*) FROM sales;"
 ```
 
-### 4️⃣ Inicie o Frontend
+### 4. Inicie o Frontend
 
 ```bash
-# Em uma nova janela de terminal
 cd solution/frontend
 npm install
 npm run dev
 ```
 
-### 5️⃣ Acesse a Aplicação
+### 5. Acesse a Aplicação
 
-**Frontend**: http://localhost:5173  
-**Backend API**: http://localhost:3001  
-**Health Check**: http://localhost:3001/api/health
+Frontend: http://localhost:5173  
+Backend API: http://localhost:3001  
+Health Check: http://localhost:3001/api/health
 
 **Credenciais de teste:**
 
@@ -71,38 +67,24 @@ npm run dev
 
 ---
 
-## ✅ Verificação Rápida
+## Verificação Rápida
 
 ```bash
-# Contar vendas no banco
 docker exec godlevel-db psql -U challenge -d challenge_db -c "SELECT COUNT(*) FROM sales;"
-
-# Testar backend
 curl http://localhost:3001/api/health
-
-# Ver logs do backend
 docker logs -f godlevel-backend-dev
 ```
 
 ---
 
-## 🔧 Comandos Úteis
+## Comandos Úteis
 
 ```bash
-# Parar todos os serviços
 docker compose down
-
-# Reiniciar do zero (apaga dados)
 docker compose down -v
-docker compose up -d
-docker compose run --rm data-generator
-
-# Acessar o banco diretamente
 docker exec -it godlevel-db psql -U challenge -d challenge_db
-
-# Ver logs
-docker logs -f godlevel-db          # PostgreSQL
-docker logs -f godlevel-backend-dev # Backend
+docker logs -f godlevel-db
+docker logs -f godlevel-backend-dev
 ```
 
 ## Estrutura dos Dados
@@ -118,13 +100,6 @@ Sale
 
 **Schema completo**: [DADOS.md](./DADOS.md)
 
-## Próximos Passos
-
-1. **Entenda o problema**: Leia [PROBLEMA.md](./PROBLEMA.md)
-2. **Explore os dados**: Rode queries, veja padrões
-3. **Desenhe solução**: Arquitetura, stack, UX
-4. **Implemente**: Resolva o problema!
-
 ---
 
-**Setup completo! Hora de codar. 🚀**
+Setup completo!
