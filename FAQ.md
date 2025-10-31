@@ -50,7 +50,20 @@ Foque em resolver o problema core MUITO bem. Features extras são bonus, não re
 
 ### Preciso fazer autenticação?
 
-Não.
+Não é obrigatório, mas valorizado. Esta solução implementa autenticação completa com JWT e validação robusta de senhas.
+
+### Como funciona a validação de senha?
+
+A plataforma exige senhas seguras com:
+
+- Mínimo 8 caracteres
+- 1 letra maiúscula
+- 1 caractere especial
+- Validação em tempo real (client-side) + server-side
+
+### A plataforma está em português?
+
+Sim! Interface 100% traduzida para português brasileiro, incluindo mensagens de erro, labels, gráficos e insights.
 
 ### Queries precisam ser rápidas mesmo?
 
@@ -121,5 +134,3 @@ Sim, como ferramenta. Mas você deve entender e defender cada linha de código.
 ### E se eu colar de outro participante?
 
 Desqualificação imediata. Temos detecção de similaridade.
-
-

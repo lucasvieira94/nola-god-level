@@ -30,6 +30,13 @@ A plataforma está **100% funcional em produção** com:
 
 **Acesse agora**: [nola-god-level-solution.vercel.app](https://nola-god-level-solution.vercel.app)
 
+### Características da Plataforma
+
+- **100% em Português**: Interface completamente traduzida
+- **Autenticação Segura**: Validação de senha com requisitos robustos
+- **Responsiva**: Design otimizado para desktop e mobile
+- **Modo Escuro**: Tema claro/escuro com persistência
+
 ### Ambiente Local (Stress Test)
 
 Para demonstrar escalabilidade, o ambiente local inclui:
@@ -93,6 +100,13 @@ npm run dev
 
 - Email: `test@nola.com`
 - Senha: `Test123!`
+
+**Requisitos de Senha para Novos Usuários:**
+
+- Mínimo 8 caracteres
+- 1 letra maiúscula (A-Z)
+- 1 caractere especial (!@#$%^&\*(),.?":{}|<>)
+- Validação em tempo real (client-side + server-side)
 
 ---
 
@@ -170,10 +184,13 @@ npm run dev
 
 ### Segurança
 
-- Autenticação JWT: Tokens seguros e expiráveis
-- Password Hashing: Bcrypt com salt rounds
-- Protected Routes: Frontend e backend protegidos
-- CORS Configurado: Apenas origens autorizadas
+- **Autenticação JWT**: Tokens seguros e expiráveis
+- **Password Hashing**: Bcrypt com salt rounds
+- **Validação de Senha**: Regex obrigatório (8+ caracteres, 1 maiúscula, 1 especial)
+- **Validação Dupla**: Client-side (UX) + Server-side (segurança)
+- **Protected Routes**: Frontend e backend protegidos
+- **CORS Configurado**: Apenas origens autorizadas
+- **Express Validator**: Validação robusta de inputs
 
 ### Performance
 

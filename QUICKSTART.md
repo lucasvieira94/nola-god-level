@@ -65,6 +65,14 @@ Health Check: http://localhost:3001/api/health
 - Email: `test@nola.com`
 - Senha: `Test123!`
 
+**Para criar uma nova conta, a senha deve ter:**
+
+- Mínimo 8 caracteres
+- Pelo menos 1 letra maiúscula (A-Z)
+- Pelo menos 1 caractere especial (!@#$%^&\*(),.?":{}|<>)
+
+> Exemplo de senha válida: `MinhaSenh@123`, `Teste2024!`, `Nola#Plat1`
+
 ---
 
 ## Verificação Rápida
