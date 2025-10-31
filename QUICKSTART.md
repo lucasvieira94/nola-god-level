@@ -39,8 +39,11 @@ docker ps
 ### 3️⃣ Popule o Banco de Dados
 
 ```bash
-# Gera 90k+ vendas para testes (leva ~5 minutos)
+# OPÇÃO 1: Volume completo - 2.0M+ vendas para stress test (leva ~30 minutos)
 docker compose run --rm data-generator
+
+# OPÇÃO 2: Volume menor - 90k vendas para testes rápidos (leva ~5 minutos)
+docker compose run --rm -e MONTHS=10 data-generator
 
 # Verifique os dados
 docker exec godlevel-db psql -U challenge -d challenge_db -c "SELECT COUNT(*) FROM sales;"

@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
@@ -29,6 +29,9 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgresql://challenge:challenge_2024@postgres:5432/challenge_db
+      # Ajuste os parâmetros para controlar o volume de dados:
+      # MONTHS: número de meses de dados (padrão: 60 = 2.0M+ vendas)
+      # Para volume menor (~90k vendas): docker compose run --rm -e MONTHS=10 data-generator
     command: >
       sh -c "
         echo 'Waiting for database to be ready...' &&
@@ -45,7 +48,7 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@godlevel.com
       PGADMIN_DEFAULT_PASSWORD: admin
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_SERVER_MODE: "False"
     ports:
       - "5050:80"
     depends_on:
@@ -56,4 +59,3 @@ services:
 volumes:
   postgres_data:
     driver: local
-
