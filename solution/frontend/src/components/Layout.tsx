@@ -61,17 +61,17 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               <button
                 onClick={() => navigate("/dashboard")}
                 className="flex items-center px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                aria-label="Go to dashboard"
+                aria-label="Ir para o painel"
               >
                 <LayoutDashboard className="w-5 h-5 mr-2" aria-hidden="true" />
-                Dashboard
+                Painel
               </button>
 
               <button
                 onClick={handleDownloadDocs}
                 className="flex items-center px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 title="Baixar Documentação"
-                aria-label="Download documentation"
+                aria-label="Baixar documentação"
               >
                 <FileDown className="w-5 h-5 mr-2" aria-hidden="true" />
                 Docs
@@ -82,13 +82,13 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 className="p-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 title={
                   theme === "dark"
-                    ? "Switch to light mode"
-                    : "Switch to dark mode"
+                    ? "Mudar para modo claro"
+                    : "Mudar para modo escuro"
                 }
                 aria-label={
                   theme === "dark"
-                    ? "Switch to light mode"
-                    : "Switch to dark mode"
+                    ? "Mudar para modo claro"
+                    : "Mudar para modo escuro"
                 }
               >
                 {theme === "dark" ? (
@@ -110,8 +110,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <button
                   onClick={handleLogout}
                   className="p-2 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-                  title="Logout"
-                  aria-label="Logout from your account"
+                  title="Sair"
+                  aria-label="Sair da sua conta"
                 >
                   <LogOut className="w-5 h-5" aria-hidden="true" />
                 </button>
@@ -123,7 +123,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="p-2 text-gray-600 dark:text-gray-400"
-                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-menu"
               >
@@ -151,10 +151,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 }}
                 className="flex items-center w-full px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg"
                 role="menuitem"
-                aria-label="Go to dashboard"
+                aria-label="Ir para o painel"
               >
                 <LayoutDashboard className="w-5 h-5 mr-2" aria-hidden="true" />
-                Dashboard
+                Painel
               </button>
               <button
                 onClick={() => {
@@ -163,7 +163,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 }}
                 className="flex items-center w-full px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg"
                 role="menuitem"
-                aria-label="Download documentation"
+                aria-label="Baixar documentação"
               >
                 <FileDown className="w-5 h-5 mr-2" aria-hidden="true" />
                 Baixar Documentação
@@ -174,8 +174,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 role="menuitem"
                 aria-label={
                   theme === "dark"
-                    ? "Switch to light mode"
-                    : "Switch to dark mode"
+                    ? "Mudar para modo claro"
+                    : "Mudar para modo escuro"
                 }
               >
                 {theme === "dark" ? (
@@ -183,7 +183,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 ) : (
                   <Moon className="w-5 h-5 mr-2" aria-hidden="true" />
                 )}
-                {theme === "dark" ? "Light mode" : "Dark mode"}
+                {theme === "dark" ? "Modo claro" : "Modo escuro"}
               </button>
               <div className="pt-3 border-t dark:border-gray-700">
                 <div className="text-16 mb-2">
@@ -198,10 +198,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   onClick={handleLogout}
                   className="flex items-center w-full px-3 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg"
                   role="menuitem"
-                  aria-label="Logout from your account"
+                  aria-label="Sair da sua conta"
                 >
                   <LogOut className="w-5 h-5 mr-2" aria-hidden="true" />
-                  Logout
+                  Sair
                 </button>
               </div>
             </div>

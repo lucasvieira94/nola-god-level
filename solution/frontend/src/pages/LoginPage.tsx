@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
 
+// Regex: mínimo 8 caracteres, 1 maiúscula, 1 caractere especial
+const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
   const [name, setName] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const { login, register, isLoading, error, isAuthenticated, clearError } =
     useAuthStore();
@@ -24,6 +28,16 @@ export const LoginPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setPasswordError("");
+
+    // Validar senha no registro
+    if (isRegistering && !PASSWORD_REGEX.test(password)) {
+      setPasswordError(
+        "A senha deve ter no mínimo 8 caracteres, incluindo 1 letra maiúscula e 1 caractere especial"
+      );
+      return;
+    }
+
     try {
       if (isRegistering) {
         await register(email, password, name);
@@ -49,7 +63,7 @@ export const LoginPage: React.FC = () => {
           NOLA Platform
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-center mb-6">
-          {isRegistering ? "Create your account" : "Sign in to your account"}
+          {isRegistering ? "Crie sua conta" : "Entre na sua conta"}
         </p>
 
         <form
@@ -60,7 +74,7 @@ export const LoginPage: React.FC = () => {
           {isRegistering && (
             <div>
               <label htmlFor="name" className="label">
-                Name
+                Nome
               </label>
               <input
                 id="name"
@@ -77,7 +91,7 @@ export const LoginPage: React.FC = () => {
 
           <div>
             <label htmlFor="email" className="label">
-              Email
+              E-mail
             </label>
             <input
               id="email"
@@ -86,7 +100,7 @@ export const LoginPage: React.FC = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="input"
               required
-              placeholder="maria@restaurant.com"
+              placeholder="maria@restaurante.com"
               aria-required="true"
               autoComplete="email"
             />
@@ -94,17 +108,20 @@ export const LoginPage: React.FC = () => {
 
           <div>
             <label htmlFor="password" className="label">
-              Password
+              Senha
             </label>
             <input
               id="password"
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setPasswordError("");
+              }}
               className="input"
               required
               placeholder="••••••••"
-              minLength={6}
+              minLength={8}
               aria-required="true"
               aria-describedby={
                 isRegistering ? "password-requirements" : undefined
@@ -116,7 +133,13 @@ export const LoginPage: React.FC = () => {
                 id="password-requirements"
                 className="text-12 text-gray-500 dark:text-gray-400 mt-1"
               >
-                Minimum 6 characters
+                Mínimo 8 caracteres, incluindo 1 letra maiúscula e 1 caractere
+                especial (!@#$%^&*...)
+              </p>
+            )}
+            {passwordError && (
+              <p className="text-12 text-red-600 dark:text-red-400 mt-1">
+                {passwordError}
               </p>
             )}
           </div>
@@ -138,10 +161,10 @@ export const LoginPage: React.FC = () => {
             aria-busy={isLoading}
           >
             {isLoading
-              ? "Loading..."
+              ? "Carregando..."
               : isRegistering
-              ? "Create Account"
-              : "Sign In"}
+              ? "Criar Conta"
+              : "Entrar"}
           </button>
         </form>
 
@@ -150,15 +173,16 @@ export const LoginPage: React.FC = () => {
             onClick={() => {
               setIsRegistering(!isRegistering);
               clearError();
+              setPasswordError("");
             }}
             className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-16"
             aria-label={
-              isRegistering ? "Switch to sign in" : "Switch to registration"
+              isRegistering ? "Mudar para login" : "Mudar para registro"
             }
           >
             {isRegistering
-              ? "Already have an account? Sign in"
-              : "Don't have an account? Register"}
+              ? "Já tem uma conta? Entre"
+              : "Não tem uma conta? Registre-se"}
           </button>
         </div>
       </div>

@@ -4,17 +4,22 @@ import jwt from "jsonwebtoken";
 import prisma from "../config/database";
 import { body, validationResult } from "express-validator";
 
+// Regex: mínimo 8 caracteres, 1 maiúscula, 1 caractere especial
+const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+
 export const registerValidation = [
-  body("email").isEmail().withMessage("Invalid email"),
+  body("email").isEmail().withMessage("E-mail inválido"),
   body("password")
-    .isLength({ min: 6 })
-    .withMessage("Password must be at least 6 characters"),
-  body("name").notEmpty().withMessage("Name is required"),
+    .matches(PASSWORD_REGEX)
+    .withMessage(
+      "A senha deve ter no mínimo 8 caracteres, incluindo 1 letra maiúscula e 1 caractere especial"
+    ),
+  body("name").notEmpty().withMessage("Nome é obrigatório"),
 ];
 
 export const loginValidation = [
-  body("email").isEmail().withMessage("Invalid email"),
-  body("password").notEmpty().withMessage("Password is required"),
+  body("email").isEmail().withMessage("E-mail inválido"),
+  body("password").notEmpty().withMessage("Senha é obrigatória"),
 ];
 
 export const register = async (req: Request, res: Response) => {
@@ -28,7 +33,7 @@ export const register = async (req: Request, res: Response) => {
 
     const existingUser = await prisma.user.findUnique({ where: { email } });
     if (existingUser) {
-      return res.status(400).json({ error: "User already exists" });
+      return res.status(400).json({ error: "Usuário já existe" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -59,7 +64,7 @@ export const register = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.error("Register error:", error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Erro interno do servidor" });
   }
 };
 
@@ -74,12 +79,12 @@ export const login = async (req: Request, res: Response) => {
 
     const user = await prisma.user.findUnique({ where: { email } });
     if (!user) {
-      return res.status(401).json({ error: "Invalid credentials" });
+      return res.status(401).json({ error: "Credenciais inválidas" });
     }
 
     const isValidPassword = await bcrypt.compare(password, user.password);
     if (!isValidPassword) {
-      return res.status(401).json({ error: "Invalid credentials" });
+      return res.status(401).json({ error: "Credenciais inválidas" });
     }
 
     const token = jwt.sign(
@@ -100,7 +105,7 @@ export const login = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.error("Login error:", error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Erro interno do servidor" });
   }
 };
 
@@ -119,12 +124,12 @@ export const getProfile = async (req: Request, res: Response) => {
     });
 
     if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      return res.status(404).json({ error: "Usuário não encontrado" });
     }
 
     res.json(user);
   } catch (error) {
     console.error("Get profile error:", error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Erro interno do servidor" });
   }
 };

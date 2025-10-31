@@ -25,7 +25,7 @@ export const FilterBar: React.FC = () => {
     <div className="card">
       <div className="flex flex-wrap gap-4">
         <div className="flex-1 min-w-[200px]">
-          <label className="label">Start Date</label>
+          <label className="label">Data Inicial</label>
           <input
             type="date"
             value={filters.startDate}
@@ -35,7 +35,7 @@ export const FilterBar: React.FC = () => {
         </div>
 
         <div className="flex-1 min-w-[200px]">
-          <label className="label">End Date</label>
+          <label className="label">Data Final</label>
           <input
             type="date"
             value={filters.endDate}
@@ -45,13 +45,13 @@ export const FilterBar: React.FC = () => {
         </div>
 
         <div className="flex-1 min-w-[200px]">
-          <label className="label">Channel</label>
+          <label className="label">Canal</label>
           <select
             value={filters.channelId || ""}
             onChange={(e) => setChannel(e.target.value || undefined)}
             className="input"
           >
-            <option value="">All Channels</option>
+            <option value="">Todos os Canais</option>
             {availableFilters?.channels.map((channel) => (
               <option key={channel.id} value={channel.id}>
                 {channel.name} ({channel.type})
@@ -61,13 +61,13 @@ export const FilterBar: React.FC = () => {
         </div>
 
         <div className="flex-1 min-w-[200px]">
-          <label className="label">Store</label>
+          <label className="label">Loja</label>
           <select
             value={filters.storeId || ""}
             onChange={(e) => setStore(e.target.value || undefined)}
             className="input"
           >
-            <option value="">All Stores</option>
+            <option value="">Todas as Lojas</option>
             {availableFilters?.stores.map((store) => (
               <option key={store.id} value={store.id}>
                 {store.name} - {store.city}
@@ -78,7 +78,7 @@ export const FilterBar: React.FC = () => {
 
         <div className="flex items-end">
           <button onClick={resetFilters} className="btn-secondary">
-            Reset
+            Limpar
           </button>
         </div>
       </div>

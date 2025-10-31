@@ -222,8 +222,8 @@ export const DashboardPage: React.FC = () => {
       </section>
 
       {/* Charts Grid */}
-      <section aria-label="Data Visualizations">
-        <h2 className="sr-only">Data Visualizations</h2>
+      <section aria-label="Visualizações de Dados">
+        <h2 className="sr-only">Visualizações de Dados</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Revenue Over Time */}
           <div className="card">
@@ -242,6 +242,7 @@ export const DashboardPage: React.FC = () => {
                   dataKey="revenue"
                   stroke="#ef4444"
                   strokeWidth={2}
+                  name="Receita (R$)"
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -264,6 +265,7 @@ export const DashboardPage: React.FC = () => {
                   dataKey="orders"
                   stroke="#3b82f6"
                   strokeWidth={2}
+                  name="Pedidos"
                 />
               </LineChart>
             </ResponsiveContainer>
