@@ -46,3 +46,14 @@ populate_production_db.py
 check_data.py
 test_api.py
 
+
+# Development/Debug scripts (temporary)
+populate_to_250k.sh
+populate_production_batch.py
+DARK_MODE_COMPLETE.md
+FIX_STATUS.md
+NEXT_STEPS.md
+RESTART_BACKEND.md
+START_APP.md
+start.bat
+start.sh
