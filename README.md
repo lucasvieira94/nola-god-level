@@ -336,10 +336,10 @@ MIT License - veja [LICENSE](LICENSE) para detalhes.
 
 ### Desenvolvedor
 
-**Antonio Claudio Junior**  
-Email: aclaudiojunior.dev@gmail.com  
+**Antonio Claudino Silva Neto**  
+Email: dev.software.atlas@gmail.com  
 GitHub: [@Su6eate9](https://github.com/Su6eate9)  
-LinkedIn: [Antonio Claudio Junior](https://www.linkedin.com/in/antonioclaudiojunior)
+LinkedIn: [Antonio Claudio Junior](https://www.linkedin.com/in/antonio-claudino-dev-frontend-e-mobile/)
 
 ### Submissão do Challenge
 
@@ -352,7 +352,7 @@ Prazo: 03/11/2025 às 23:59
 
 <div align="center">
 
-Made with ❤️ by [Antonio Claudio Junior](https://github.com/Su6eate9)
+Made with ❤️ by [Antonio Claudio Silva Neto](https://github.com/Su6eate9)
 
 **NOLA Platform** • 2025
 
