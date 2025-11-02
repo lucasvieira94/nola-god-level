@@ -338,10 +338,8 @@ MIT License - veja [LICENSE](LICENSE) para detalhes.
 
 **Antonio Claudino Silva Neto**  
 Email: dev.software.atlas@gmail.com  
-GitHub: [@Su6eate9](https://github.com/Su6eate9)  
-LinkedIn: [Antonio Claudio Junior](https://www.linkedin.com/in/antonio-claudino-dev-frontend-e-mobile/)
-
-### Submissão do Challenge
+GitHub: [@Su6eate9](https://github.com/Su6eate9)
+LinkedIn: [Antonio Claudino Silva Neto](https://www.linkedin.com/in/antonio-claudino-dev-frontend-e-mobile/)### Submissão do Challenge
 
 Email: gsilvestre@arcca.io  
 Discord: https://discord.gg/z8pVH26j  
@@ -352,7 +350,7 @@ Prazo: 03/11/2025 às 23:59
 
 <div align="center">
 
-Made with ❤️ by [Antonio Claudio Silva Neto](https://github.com/Su6eate9)
+Made by [Antonio Claudio Silva Neto](https://github.com/Su6eate9)
 
 **NOLA Platform** • 2025
 

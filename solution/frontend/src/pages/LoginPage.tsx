@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
+import { Eye, EyeOff } from "lucide-react";
 
 // Regex: mínimo 8 caracteres, 1 maiúscula, 1 caractere especial
 const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
@@ -11,6 +12,7 @@ export const LoginPage: React.FC = () => {
   const [isRegistering, setIsRegistering] = useState(false);
   const [name, setName] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const { login, register, isLoading, error, isAuthenticated, clearError } =
     useAuthStore();
@@ -110,24 +112,40 @@ export const LoginPage: React.FC = () => {
             <label htmlFor="password" className="label">
               Senha
             </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setPasswordError("");
-              }}
-              className="input"
-              required
-              placeholder="••••••••"
-              minLength={8}
-              aria-required="true"
-              aria-describedby={
-                isRegistering ? "password-requirements" : undefined
-              }
-              autoComplete={isRegistering ? "new-password" : "current-password"}
-            />
+            <div className="relative">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setPasswordError("");
+                }}
+                className="input pr-10"
+                required
+                placeholder="••••••••"
+                minLength={8}
+                aria-required="true"
+                aria-describedby={
+                  isRegistering ? "password-requirements" : undefined
+                }
+                autoComplete={
+                  isRegistering ? "new-password" : "current-password"
+                }
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+              >
+                {showPassword ? (
+                  <EyeOff className="w-5 h-5" />
+                ) : (
+                  <Eye className="w-5 h-5" />
+                )}
+              </button>
+            </div>
             {isRegistering && (
               <p
                 id="password-requirements"
