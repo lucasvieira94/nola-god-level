@@ -1,0 +1,7 @@
+psycopg2-binary==2.9.9
+Faker==20.1.0
+Django==4.2.*                # versão já usada no projeto original (compatível)
+djangorestframework==3.15.* # API REST
+drf-yasg==1.21.*            # UI Swagger (opcional, mas útil)
+python-dotenv==1.0.*        # carrega .env
+openai==1.30.*              # IA que gera o resumo

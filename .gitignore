@@ -35,3 +35,4 @@ build/
 # OS
 Thumbs.db
 
+node_modules

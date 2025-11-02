@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@vueuse/core": "^14.0.0",
+    "axios": "^1.13.1",
+    "dayjs": "^1.11.19",
+    "vue3-apexcharts": "^1.10.0",
+    "vue3-grid-layout": "^1.0.0",
+    "vuedraggable": "^4.1.0"
+  }
+}

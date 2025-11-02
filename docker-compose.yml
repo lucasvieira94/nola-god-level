@@ -1,4 +1,4 @@
-version: '3.8'
+# version: '3.9'
 
 services:
   postgres:
@@ -39,19 +39,18 @@ services:
     profiles:
       - tools
 
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    container_name: godlevel-pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@godlevel.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    ports:
-      - "5050:80"
+  summary:
+    build: ./backend
+    container_name: nola_summary
+    env_file: ./backend/.env
     depends_on:
-      - postgres
-    profiles:
-      - tools
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8001:8000"               # 8001 na host
+    command: >
+      sh -c "python manage.py migrate --noinput &&
+             gunicorn nola_summary.wsgi:application --bind 0.0.0.0:8000"
 
 volumes:
   postgres_data:
