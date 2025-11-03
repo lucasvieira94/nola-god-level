@@ -1,10 +1,37 @@
 {
+<<<<<<< HEAD
+  "name": "nola-god-level-case",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
+    "vue": "^3.5.22",
+=======
+  "dependencies": {
+>>>>>>> 5c6701322fe4ea727669e724beb44cf36270b3ed
     "@vueuse/core": "^14.0.0",
     "axios": "^1.13.1",
     "dayjs": "^1.11.19",
     "vue3-apexcharts": "^1.10.0",
     "vue3-grid-layout": "^1.0.0",
     "vuedraggable": "^4.1.0"
+<<<<<<< HEAD
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "npm:rolldown-vite@7.1.14"
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@7.1.14"
   }
 }
+
+=======
+  }
+}
+>>>>>>> 5c6701322fe4ea727669e724beb44cf36270b3ed

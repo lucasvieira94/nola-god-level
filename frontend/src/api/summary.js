@@ -1,16 +1,39 @@
-import axios from "axios";
+import api from "./axios";
 
-const api = axios.create({
-  baseURL: "/api/summary",          // e.g.: http://localhost:8001/api/summary
-});
+export async function summarizeQuestion(question) {
+  const resp = await api.post("/summary/summarize/", { question });
+  return resp.data;
+}
 
-/**
- * Envia a pergunta para o backend e devolve o resumo.
- * @param {string} question - Texto digitado pelo usuário
- * @returns {Promise<{summary:string}>}
- */
-export async function fetchSummary(question) {
-  const response = await api.post("/summarize/", { question });
-  // O backend devolve {question: "...", summary: "..."}
-  return response.data;   // { question: "...", summary: "..." }
+export async function getRevenue() {
+  const today = new Date();
+  const start = new Date();
+  start.setDate(start.getDate() - 30);
+  const fmt = d => d.toISOString().split("T")[0];
+  const resp = await api.get("/summary/revenue/", {
+    params: { start: fmt(start), end: fmt(today) },
+  });
+  return resp.data;
+}
+
+export async function getTopProducts() {
+  const today = new Date();
+  const start = new Date();
+  start.setDate(start.getDate() - 30);
+  const fmt = d => d.toISOString().split("T")[0];
+  const resp = await api.get("/summary/top-products/", {
+    params: { start: fmt(start), end: fmt(today), limit: 5 },
+  });
+  return resp.data;
+}
+
+export async function getPeakHours() {
+  const today = new Date();
+  const start = new Date();
+  start.setDate(start.getDate() - 30);
+  const fmt = d => d.toISOString().split("T")[0];
+  const resp = await api.get("/summary/peak-hours/", {
+    params: { start: fmt(start), end: fmt(today) },
+  });
+  return resp.data;
 }
