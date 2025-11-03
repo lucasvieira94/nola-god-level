@@ -38,7 +38,9 @@ Uma plataforma de analytics especializada que permite aos donos de restaurantes:
 - **Sistema de Autenticação**
 
   - Autenticação baseada em JWT com hash seguro de senhas
-  - Login/Registro com validação
+  - Login/Registro com validação robusta de senha (8+ chars, maiúscula, caractere especial)
+  - Botão de visualizar/ocultar senha durante digitação
+  - Interface 100% em Português do Brasil
   - Rotas protegidas e renovação automática de token
 
 - **Dashboard Geral**
@@ -57,10 +59,12 @@ Uma plataforma de analytics especializada que permite aos donos de restaurantes:
 
 - **Filtragem Avançada**
 
-  - Seleção de período (data início/fim)
-  - Filtro por canal (iFood, Rappi, etc.)
-  - Filtro por loja/localização
+  - Seleção de período (data início/fim) - Padrão: Outubro/2025 (273k+ vendas)
+  - Filtro por canal (iFood, Rappi, WhatsApp, etc.)
+  - Filtro por loja/localização (1.060 lojas disponíveis)
+  - Filtros independentes e combinados livremente
   - Filtros aplicam globalmente a todas as visualizações
+  - Botão "Limpar" para resetar todos os filtros
 
 - **Insights com IA** 🤖
 
@@ -811,6 +815,6 @@ Criado para o **God Level Coder Challenge** da Nola (2025)
 
 **Dúvidas?** Abra uma issue ou entre em contato via Discord do desafio.
 
-**Vídeo Demo:** [Link do vídeo demo - a ser adicionado após gravação]
+**Vídeo Demo:** https://youtu.be/Blde1-DoFEA
 
-**Demo ao Vivo:** [Link da aplicação deployada - a ser adicionado após deployment]
+**Demo ao Vivo:** [Link da aplicação deployada]
