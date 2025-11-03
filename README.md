@@ -54,7 +54,7 @@ Para demonstrar escalabilidade, o ambiente local inclui:
 
 ## Vídeo Demo
 
-> **[Assista ao vídeo de demonstração (5-10 min)]** _(link será adicionado)_
+> **[🎬 Assista ao vídeo de demonstração (5-10 min)](https://youtu.be/Blde1-DoFEA)**
 
 O vídeo mostra:
 

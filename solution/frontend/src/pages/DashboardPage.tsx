@@ -64,6 +64,7 @@ export const DashboardPage: React.FC = () => {
     setLoading(true);
     try {
       const params = getQueryParams();
+      console.log("🔍 Loading data with params:", params);
       const [
         overviewData,
         productsData,
@@ -78,13 +79,19 @@ export const DashboardPage: React.FC = () => {
         apiClient.getInsights(params),
       ]);
 
+      console.log("✅ Data loaded:", {
+        orders: overviewData.metrics.totalOrders,
+        revenue: overviewData.metrics.totalRevenue,
+        productsCount: productsData.length,
+      });
+
       setOverview(overviewData);
       setTopProducts(productsData);
       setChannels(channelsData);
       setTimeSeries(timeSeriesData);
       setInsights(insightsData.insights);
     } catch (error) {
-      console.error("Failed to load dashboard data:", error);
+      console.error("❌ Failed to load dashboard data:", error);
     } finally {
       setLoading(false);
     }

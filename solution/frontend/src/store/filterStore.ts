@@ -18,10 +18,10 @@ interface FilterStore {
 
 const getDefaultDateRange = () => {
   // Use the date range where we have actual data in the database
-  // Data range: 2025-05-02 to 2025-05-04 (can be expanded as more data is generated)
+  // Data range: 2020-11-26 to 2025-10-31 (outubro 2025 tem 273k vendas)
   return {
-    startDate: "2025-05-01",
-    endDate: "2025-05-31",
+    startDate: "2025-10-01",
+    endDate: "2025-10-31",
   };
 };
 
