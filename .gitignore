@@ -10,7 +10,8 @@ ENV/
 *.egg-info/
 dist/
 build/
-
+.venv/
+**/.venv/
 # Database
 *.db
 *.sqlite3
